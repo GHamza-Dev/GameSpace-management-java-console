@@ -1,0 +1,25 @@
+[
+  {
+    "player": {
+      "firstName": "",
+      "lastName": "HAMZA"
+    },
+    "station": {
+      "console": {
+        "name": "00:11"
+      },
+      "screen": {
+        "name": "00:00"
+      },
+      "available": true
+    },
+    "startAt": {
+      "hours": 0,
+      "minutes": 22
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 33
+    }
+  }
+]
