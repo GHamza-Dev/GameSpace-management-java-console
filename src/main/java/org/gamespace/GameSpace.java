@@ -92,8 +92,10 @@ public class GameSpace{
     }
 
     public void displayStations(){
+        int index = 1;
         for(Station station: stations){
-            System.out.println(station);
+            System.out.println("["+index+"] -----------------\n"+station);
+            index++;
         }
     }
 

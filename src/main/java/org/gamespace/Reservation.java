@@ -2,11 +2,14 @@ package org.gamespace;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDate;
+
 public class Reservation{
     private Player player;
     private Station station;
     private Time startAt;
     private Time duration;
+    private LocalDate reservationDate;
 
     public Reservation(){
 
@@ -16,6 +19,7 @@ public class Reservation{
         this.station = station;
         this.startAt = startAt;
         this.duration = duration;
+        this.reservationDate = LocalDate.now();
     }
 
     public Player getPlayer() {
