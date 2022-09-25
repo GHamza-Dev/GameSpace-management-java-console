@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.data.Storage;
 import org.dialog.Out;
 
-import javax.sound.midi.Soundbank;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,9 +66,9 @@ public class GameSpace{
         Out.soft("Add games to console: ");
         System.out.println("");
         while (true){
-            Out.soft("Add game? no/yes");
+            Out.soft("Add game? no/yes: ");
             String choice = scanner.nextLine();
-            if (!choice.contains("y")) {
+            if (!choice.contains("y") && !choice.contains("Y")) {
                 break;
             }
             console.addGame(this.promptForGameInfo());
@@ -90,6 +89,12 @@ public class GameSpace{
         Station station = new Station(console,screen,true);
         this.stations.add(station);
         Storage.store("stations.json",this.stations);
+    }
+
+    public void displayStations(){
+        for(Station station: stations){
+            System.out.println(station);
+        }
     }
 
     public void displayPlayers(){
@@ -115,7 +120,7 @@ public class GameSpace{
             System.out.println("Can not load reservations!");
             ex.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public ArrayList<Player> loadPlayers(){
@@ -127,7 +132,7 @@ public class GameSpace{
             System.out.println("Can not load players!");
             ex.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
     public ArrayList<Station> loadStations(){
@@ -139,7 +144,7 @@ public class GameSpace{
             System.out.println("Can not load stations!");
             ex.printStackTrace();
         }
-        return null;
+        return new ArrayList<>();
     }
 
 

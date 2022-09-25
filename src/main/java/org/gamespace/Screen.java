@@ -16,4 +16,9 @@ public class Screen {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString(){
+        return "Screen name: "+this.name;
+    }
 }

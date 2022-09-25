@@ -25,4 +25,13 @@ public class Station {
     public boolean isAvailable() {
         return available;
     }
+
+    @Override
+    public String toString() {
+        return "Station{" +
+                "console=" + console +
+                ", screen=" + screen +
+                ", available=" + available +
+                '}';
+    }
 }
