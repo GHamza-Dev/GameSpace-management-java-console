@@ -28,10 +28,12 @@ public class Station {
 
     @Override
     public String toString() {
-        return "Station{" +
-                "console=" + console +
-                ", screen=" + screen +
-                ", available=" + available +
-                '}';
+        String output = "Station: ";
+        if (this.available) output+= "Available ;)\n";
+        else output+="Not available :(\n";
+        output = output + screen + "\n";
+        output = output + console;
+
+        return output;
     }
 }

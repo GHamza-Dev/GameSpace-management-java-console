@@ -28,11 +28,12 @@ public class Console {
     @Override
     public String toString() {
         String output = "Console name: "+this.name+"\n";
-        output = output + "-- List of games-- \n";
 
-        if (this.games == null){
-            return output+"NO GAMES\n";
+        if (this.games == null || this.games.size() == 0){
+            return output+"[THIS CONSOLE HAVE NO GAMES!]\n";
         }
+
+        output = output + "-- List of games-- \n";
 
         for(Game game: games){
             output = output + " " + game +"\n";

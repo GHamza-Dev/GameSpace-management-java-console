@@ -3,7 +3,6 @@ package org.gamespace;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Reservation{
-
     private Player player;
     private Station station;
     private Time startAt;
