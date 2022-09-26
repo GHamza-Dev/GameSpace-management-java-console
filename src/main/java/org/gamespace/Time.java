@@ -1,6 +1,8 @@
 package org.gamespace;
 
 import javax.swing.plaf.PanelUI;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Time {
     private int hours;
@@ -43,6 +45,11 @@ public class Time {
         increment(res,t1);
         increment(res,t2);
         return res;
+    }
+
+    public static Time now(){
+        String[] now = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).split(":");
+        return new Time(Integer.valueOf(now[0]),Integer.valueOf(now[1]));
     }
 
     @Override

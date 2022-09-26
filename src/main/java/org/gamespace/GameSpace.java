@@ -137,6 +137,16 @@ public class GameSpace{
 
         return lastOccurrence;
     }
+
+    public Time stationAvailabilityTime(Station station){
+        Reservation lastOccurrence = lastStationReservation(station);
+
+        if (lastOccurrence == null) {
+            return Time.now();
+        }
+
+        return Time.add(lastOccurrence.getStartAt(),lastOccurrence.getDuration());
+    }
     public boolean isAvailable(Station station){
         Reservation lastOccurrence = lastStationReservation(station);
 
@@ -146,11 +156,9 @@ public class GameSpace{
 
         Time sum = Time.add(lastOccurrence.getStartAt(),lastOccurrence.getDuration());
 
-        String[] now = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).split(":");
+        Time now = Time.now();
 
-        Time nowTime = new Time(Integer.valueOf(now[0]),Integer.valueOf(now[1]));
-
-        return nowTime.greaterThan(sum);
+        return now.greaterThan(sum);
     }
 
     public String stationAvailability(Station station){
@@ -162,11 +170,9 @@ public class GameSpace{
 
         Time sum = Time.add(lastOccurrence.getStartAt(),lastOccurrence.getDuration());
 
-        String[] now = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).split(":");
+        Time now = Time.now();
 
-        Time nowTime = new Time(Integer.valueOf(now[0]),Integer.valueOf(now[1]));
-
-        return nowTime.greaterThan(sum) ? "Available" : "Occupied until: "+sum;
+        return now.greaterThan(sum) ? "Available" : "Occupied until: "+sum;
     }
 
     public ArrayList<Reservation> getTodayReservations(){

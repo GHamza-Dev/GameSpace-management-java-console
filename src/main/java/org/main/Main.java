@@ -24,6 +24,7 @@ public class Main {
         int nbr = 0;
 
         do {
+
             nbr = menu.getChoice(scanner);
             switch (nbr){
                 case 0:{
