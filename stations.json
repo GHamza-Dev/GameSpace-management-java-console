@@ -1,1 +1,66 @@
-[{"console":{"name":"XBOX","games":[{"name":"FIFA","type":"FOOTBALL"},{"name":"PES","type":"FOOTBALL"}]},"screen":{"name":"DELL"},"available":true},{"console":{"name":"XBOX","games":[{"name":"COUNTER-STRICKE","type":"WAR"}]},"screen":{"name":"HP"},"available":true}]
+[
+  {
+    "console": {
+      "name": "XBOX",
+      "games": [
+        {
+          "name": "PES",
+          "type": "FOOTBALL"
+        },
+        {
+          "name": "FIFA",
+          "type": "FOOTBALL"
+        },
+        {
+          "name": "NFS",
+          "type": "RACING"
+        }
+      ]
+    },
+    "screen": {
+      "name": "DEEL"
+    },
+    "stationId": 11,
+    "available": true
+  },
+  {
+    "console": {
+      "name": "PlayStation5",
+      "games": [
+        {
+          "name": "Assassin's Creed",
+          "type": "WAR"
+        }
+      ]
+    },
+    "screen": {
+      "name": "HP"
+    },
+    "stationId": 13,
+    "available": true
+  },
+  {
+    "console": {
+      "name": "Nintendo switch",
+      "games": [
+        {
+          "name": "Counter-Strike",
+          "type": "War"
+        },
+        {
+          "name": "Roby",
+          "type": "Braind-Game"
+        },
+        {
+          "name": "BigShot",
+          "type": "War"
+        }
+      ]
+    },
+    "screen": {
+      "name": "Samsung"
+    },
+    "stationId": 14,
+    "available": true
+  }
+]

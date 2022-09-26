@@ -5,29 +5,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDate;
 
 public class Reservation{
-    private Player player;
-    private Station station;
+    private int playerId;
+    private int stationId;
     private Time startAt;
     private Time duration;
-    private LocalDate reservationDate;
+    @JsonProperty(value = "date")
+    private String date;
 
     public Reservation(){
 
     }
-    public Reservation(Player player,Station station,Time startAt,Time duration) {
-        this.player = player;
-        this.station = station;
+    public Reservation(int playerId,int stationId,Time startAt,Time duration) {
+        this.playerId = playerId;
+        this.stationId = stationId;
         this.startAt = startAt;
         this.duration = duration;
-        this.reservationDate = LocalDate.now();
+        this.date = LocalDate.now().toString();
     }
 
-    public Player getPlayer() {
-        return player;
+    public int getPlayerId() {
+        return playerId;
     }
 
-    public Station getStation() {
-        return station;
+    public int getStationId() {
+        return stationId;
     }
 
     public Time getStartAt() {
@@ -37,9 +38,12 @@ public class Reservation{
     public Time getDuration() {
         return duration;
     }
+    public String getDate(){
+        return date;
+    }
 
     @Override
     public String toString() {
-        return "Reservation[player:" + player + ", station:" + station + ", startAt:" + startAt + ", duration:" + duration+"]";
+        return "Reservation[player id:" + playerId + ", station id:" + stationId + ", start at:" + startAt + ", duration:" + duration+"]";
     }
 }

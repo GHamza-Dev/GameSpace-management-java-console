@@ -17,8 +17,8 @@ public class Main {
         Menu menu = new Menu();
         menu.addChoice("add new station");
         menu.addChoice("add new player");
-        menu.addChoice("display players");
-        menu.addChoice("display all users");
+        menu.addChoice("display stations");
+        menu.addChoice("display reservations");
         menu.addChoice("display all posts");
 
         int nbr = 0;
@@ -36,13 +36,16 @@ public class Main {
                     g.addPlayer();
                 }break;
                 case 3:{
-                    g.displayPlayers();
+                    g.displayStations();
                 }break;
                 case 4:{
                     g.displayReservations();
                 }break;
                 case 5:{
-                    g.displayStations();
+                    g.displayReservations();
+                }break;
+                case 6:{
+                    g.addReservation();
                 }break;
                 default:{
                     System.out.println(404);

@@ -1,16 +1,20 @@
 package org.gamespace;
 
+import java.util.PrimitiveIterator;
+
 public class Station {
     private Console console;
     private Screen screen;
+    private int stationId;
     private boolean available;
 
     public Station(){
 
     }
-    public Station(Console console,Screen screen,boolean available) {
+    public Station(Console console,Screen screen,int stationId,boolean available) {
         this.console = console;
         this.screen = screen;
+        this.stationId = stationId;
         this.available = available;
     }
 
@@ -22,18 +26,19 @@ public class Station {
         return screen;
     }
 
+    public int getStationId(){
+        return this.stationId;
+    }
+
     public boolean isAvailable() {
         return available;
     }
 
     @Override
     public String toString() {
-        String output = "Station: ";
-        if (this.available) output+= "Available ;)\n";
-        else output+="Not available :(\n";
+        String output = "";
         output = output + screen + "\n";
         output = output + console;
-
         return output;
     }
 }

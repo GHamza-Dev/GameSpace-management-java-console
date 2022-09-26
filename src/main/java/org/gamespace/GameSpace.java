@@ -5,10 +5,10 @@ import org.data.Storage;
 import org.dialog.Out;
 
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class GameSpace{
     private ArrayList<Reservation> reservations;
@@ -23,8 +23,31 @@ public class GameSpace{
         this.stations = loadStations();
         this.waitingList = new ArrayList<>();
     }
-    public void addReservation(Reservation reservation){
-        this.reservations.add(reservation);
+    public void addReservation(){
+        int playerId = 0;
+        int stationId = 0;
+
+        Out.soft("[1] - Add new player.");
+        Out.soft("[2] - Choose from players list.");
+        Out.soft(">: ");
+
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+            playerId = addPlayer().getId();
+        }else {
+            Out.soft("Enter player id: ");
+            displayPlayers();
+            Out.soft("Enter player id: ");
+            int id = scanner.nextInt();
+            playerId = getPlayerById(this.players,id) != null ? id : 0;
+        }
+
+        Time t1 = new Time(15,00);
+        Time t2 = new Time(00,30);
+        stationId = this.stations.get(2).getStationId();
+
+        this.reservations.add(new Reservation(playerId,stationId,t1,t2));
         Storage.store("reservations.json",this.reservations);
     }
 
@@ -86,7 +109,7 @@ public class GameSpace{
     public void addStation(){
         Console console = promptForConsoleInfo();
         Screen screen = promptForScreenInfo();
-        Station station = new Station(console,screen,true);
+        Station station = new Station(console,screen,lastStationId()+1,true);
         this.stations.add(station);
         Storage.store("stations.json",this.stations);
     }
@@ -94,9 +117,74 @@ public class GameSpace{
     public void displayStations(){
         int index = 1;
         for(Station station: stations){
-            System.out.println("["+index+"] -----------------\n"+station);
+            String av = stationAvailability(station);
+            System.out.println("["+index+"]["+av+"] -----------------\n"+station);
             index++;
         }
+    }
+
+    public Reservation lastStationReservation(Station station){
+        Reservation lastOccurrence = null;
+        String today = LocalDate.now().toString();
+
+        for(Reservation reservation: reservations){
+            if (reservation.getDate().equals(today)) {
+                if (reservation.getStationId() == station.getStationId()) {
+                    lastOccurrence = reservation;
+                }
+            }
+        }
+
+        return lastOccurrence;
+    }
+    public boolean isAvailable(Station station){
+        Reservation lastOccurrence = lastStationReservation(station);
+
+        if (lastOccurrence == null) {
+            return true;
+        }
+
+        Time sum = Time.add(lastOccurrence.getStartAt(),lastOccurrence.getDuration());
+
+        String[] now = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).split(":");
+
+        Time nowTime = new Time(Integer.valueOf(now[0]),Integer.valueOf(now[1]));
+
+        return nowTime.greaterThan(sum);
+    }
+
+    public String stationAvailability(Station station){
+        Reservation lastOccurrence = lastStationReservation(station);
+
+        if (lastOccurrence == null) {
+            return "Available";
+        }
+
+        Time sum = Time.add(lastOccurrence.getStartAt(),lastOccurrence.getDuration());
+
+        String[] now = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm")).split(":");
+
+        Time nowTime = new Time(Integer.valueOf(now[0]),Integer.valueOf(now[1]));
+
+        return nowTime.greaterThan(sum) ? "Available" : "Occupied until: "+sum;
+    }
+
+    public ArrayList<Reservation> getTodayReservations(){
+
+        if (this.reservations == null || this.reservations.size() == 0) {
+            return new ArrayList<>();
+        }
+
+        ArrayList<Reservation> todayReservations = new ArrayList<>();
+        String today = LocalDate.now().toString();
+
+        for(Reservation reservation: reservations){
+            if (reservation.getDate().equals(today)) {
+                todayReservations.add(reservation);
+            }
+        }
+
+        return todayReservations;
     }
 
     public void displayPlayers(){
@@ -111,6 +199,26 @@ public class GameSpace{
             return 10;
         }
         return this.players.get(size-1).getId();
+    }
+
+    public int lastStationId(){
+        int size = this.stations.size();
+        if (size == 0) {
+            return 10;
+        }
+        return this.stations.get(size-1).getStationId();
+    }
+
+    public Player getPlayerById(ArrayList<Player> list,int id){
+        if (list.size() == 0) {
+            return null;
+        }
+        for (Player player: list){
+            if (player.getId() == id) {
+                return player;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Reservation> loadReservations(){

@@ -1,5 +1,7 @@
 package org.gamespace;
 
+import javax.swing.plaf.PanelUI;
+
 public class Time {
     private int hours;
     private int minutes;
@@ -18,6 +20,29 @@ public class Time {
 
     public int getMinutes() {
         return minutes;
+    }
+
+    public boolean greaterThan(Time compared){
+        if ((this.hours > compared.hours) || ((this.hours == compared.hours) && this.minutes > compared.minutes)) {
+            return true;
+        }
+        return false;
+    }
+    public static void increment(Time time,Time amount){
+        time.hours+=amount.hours;
+        for (int i = 0; i < amount.getMinutes(); i++) {
+            time.minutes++;
+            if (time.minutes == 60) {
+                time.hours++;
+                time.minutes = 0;
+            }
+        }
+    }
+    public static Time add(Time t1,Time t2){
+        Time res = new Time(00,00);
+        increment(res,t1);
+        increment(res,t2);
+        return res;
     }
 
     @Override
