@@ -6,8 +6,6 @@ import org.dialog.Out;
 
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class GameSpace{
@@ -43,11 +41,26 @@ public class GameSpace{
             playerId = getPlayerById(this.players,id) != null ? id : 0;
         }
 
-        Time t1 = new Time(15,00);
-        Time t2 = new Time(00,30);
-        stationId = this.stations.get(2).getStationId();
+        displayStations();
 
-        this.reservations.add(new Reservation(playerId,stationId,t1,t2));
+        System.out.println("Chose a station: ");
+        int chosenStationId = scanner.nextInt();
+        Station chosenStation = stations.get(chosenStationId-1);
+
+        if (isAvailable(chosenStation)) {
+            Plan plan = promptForPlayerPlan();
+
+            if (plan.outOfInterval()){
+                System.out.println("This plan is out of interval please go back and chose a valid plan!");
+                return;
+            }
+
+            this.reservations.add(new Reservation(playerId,chosenStationId,Time.now(),plan.getDuration()));
+            System.out.println("Enjoy!!!!!!!!");
+        }else {
+            return;
+        }
+
         Storage.store("reservations.json",this.reservations);
     }
 
@@ -105,6 +118,26 @@ public class GameSpace{
         String name = scanner.nextLine();
         return new Screen(name);
     }
+
+    public Plan promptForPlayerPlan(){
+        ArrayList<Plan> plans = new ArrayList<>();
+
+        plans.add(new Plan(1,new Time(0,30),05));
+        plans.add(new Plan(2,new Time(1,0),10));
+        plans.add(new Plan(3,new Time(2,0),18));
+        plans.add(new Plan(4,new Time(5,0),40));
+        plans.add(new Plan(5,new Time(9,0),65));
+
+        for (Plan plan: plans){
+            System.out.println(plan);
+        }
+
+        Out.soft("Chose a plan: ");
+        int planId = scanner.nextInt();
+
+        return plans.get(planId-1);
+    }
+
 
     public void addStation(){
         Console console = promptForConsoleInfo();

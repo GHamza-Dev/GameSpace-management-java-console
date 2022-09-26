@@ -1,1 +1,93 @@
-[{"playerId":12,"stationId":11,"startAt":{"hours":11,"minutes":0},"duration":{"hours":0,"minutes":30},"date":"2022-09-26"},{"playerId":15,"stationId":11,"startAt":{"hours":11,"minutes":0},"duration":{"hours":0,"minutes":30},"date":"2022-09-26"},{"playerId":15,"stationId":11,"startAt":{"hours":11,"minutes":0},"duration":{"hours":0,"minutes":30},"date":"2022-09-26"},{"playerId":14,"stationId":14,"startAt":{"hours":14,"minutes":0},"duration":{"hours":0,"minutes":60},"date":"2022-09-26"},{"playerId":13,"stationId":14,"startAt":{"hours":14,"minutes":0},"duration":{"hours":0,"minutes":60},"date":"2022-09-26"},{"playerId":13,"stationId":14,"startAt":{"hours":15,"minutes":0},"duration":{"hours":0,"minutes":30},"date":"2022-09-26"}]
+[
+  {
+    "playerId": 12,
+    "stationId": 11,
+    "startAt": {
+      "hours": 11,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 15,
+    "stationId": 11,
+    "startAt": {
+      "hours": 11,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 15,
+    "stationId": 11,
+    "startAt": {
+      "hours": 11,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 14,
+    "stationId": 14,
+    "startAt": {
+      "hours": 14,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 60
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 13,
+    "stationId": 14,
+    "startAt": {
+      "hours": 14,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 60
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 13,
+    "stationId": 14,
+    "startAt": {
+      "hours": 15,
+      "minutes": 0
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-26"
+  },
+  {
+    "playerId": 13,
+    "stationId": 2,
+    "startAt": {
+      "hours": 21,
+      "minutes": 7
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-26"
+  }
+]
