@@ -16,6 +16,7 @@ public class Main {
         menu.addChoice("display reservations");
         menu.addChoice("display players");
         menu.addChoice("add reservation");
+        menu.addChoice("display statistics");
         menu.addChoice(".......");
 
 
@@ -44,6 +45,9 @@ public class Main {
                 }break;
                 case 6:{
                     g.addReservation();
+                }break;
+                case 7:{
+                    g.displayStatistics();
                 }break;
                 default:{
                     System.out.println(404);

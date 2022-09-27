@@ -54,7 +54,7 @@ public class GameSpace{
                 return;
             }
 
-            this.reservations.add(new Reservation(playerId,chosenStation.getStationId(),Time.now(),plan.getDuration()));
+            this.reservations.add(new Reservation(playerId,chosenStation.getStationId(),Time.now(),plan.getDuration(),plan.getPrice()));
             System.out.println("Enjoy!!!!!!!!");
         }else {
             System.out.println("This station is not available at this moment!");
@@ -206,6 +206,34 @@ public class GameSpace{
         Time now = Time.now();
 
         return now.greaterThan(sum) ? "Available" : "Occupied until: "+sum;
+    }
+
+    public void displayStatistics(){
+        int size = reservations.size();
+        if (size == 0) {
+            System.out.println("Data is not available at this moment!");
+            return;
+        }
+
+        String  prevDate = this.reservations.get(0).getDate();
+        Double prevPrice = this.reservations.get(0).getPrice();
+        HashMap<String,Double> stats = new HashMap<String, Double>();
+
+        for (int i = 1; i < size; i++) {
+            if (reservations.get(i).getDate().equals(prevDate)) {
+                prevPrice+=reservations.get(i).getPrice();
+            }else {
+                stats.put(prevDate,prevPrice);
+                prevPrice = reservations.get(i).getPrice();
+                prevDate = reservations.get(i).getDate();
+            }
+        }
+
+        stats.put(prevDate,prevPrice);
+
+        for (var entry : stats.entrySet()) {
+            System.out.println("Day: "+entry.getKey()+" | Revenue: "+entry.getValue()+"DH.");
+        }
     }
 
     public ArrayList<Reservation> getTodayReservations(){

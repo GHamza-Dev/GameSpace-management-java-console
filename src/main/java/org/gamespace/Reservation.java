@@ -11,16 +11,19 @@ public class Reservation{
     private Time duration;
     @JsonProperty(value = "date")
     private String date;
+    @JsonProperty(value = "price")
+    private double price;
 
     public Reservation(){
 
     }
-    public Reservation(int playerId,int stationId,Time startAt,Time duration) {
+    public Reservation(int playerId,int stationId,Time startAt,Time duration,double price) {
         this.playerId = playerId;
         this.stationId = stationId;
         this.startAt = startAt;
         this.duration = duration;
         this.date = LocalDate.now().toString();
+        this.price = price;
     }
 
     public int getPlayerId() {
@@ -40,6 +43,10 @@ public class Reservation{
     }
     public String getDate(){
         return this.date;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     @Override
