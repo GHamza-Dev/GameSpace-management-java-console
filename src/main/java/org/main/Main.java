@@ -19,16 +19,18 @@ public class Main {
         menu.addChoice("add new player");
         menu.addChoice("display stations");
         menu.addChoice("display reservations");
-        menu.addChoice("display all posts");
+        menu.addChoice("display players");
+        menu.addChoice("add reservation");
+        menu.addChoice(".......");
+
 
         int nbr = 0;
 
         do {
-
             nbr = menu.getChoice(scanner);
             switch (nbr){
                 case 0:{
-                    System.out.println("GOOD BAY!");
+                    Out.soft("Good bye...");
                 }continue;
                 case 1:{
                     g.addStation();
@@ -43,7 +45,7 @@ public class Main {
                     g.displayReservations();
                 }break;
                 case 5:{
-                    g.displayReservations();
+                    g.displayPlayers();
                 }break;
                 case 6:{
                     g.addReservation();

@@ -15,13 +15,14 @@ public class Menu {
     }
 
     public void addChoice(String choice){
-        String msg = "Click "+nbrOfChoices+": to ";
+        String msg = "Enter "+nbrOfChoices+": to ";
         this.choices.add(msg+choice+".");
         nbrOfChoices++;
     }
 
     public void printMenu(){
         System.out.print("*****");
+        Out.soft("Enter 0: to exit the application.");
         for (int i = 0; i < choices.size(); i++) {
             Out.soft(choices.get(i));
         }
