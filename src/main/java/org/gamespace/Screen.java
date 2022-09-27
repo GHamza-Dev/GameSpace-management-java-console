@@ -1,8 +1,4 @@
 package org.gamespace;
-
-import javax.swing.plaf.PanelUI;
-import java.security.PublicKey;
-
 public class Screen {
     private String name;
 

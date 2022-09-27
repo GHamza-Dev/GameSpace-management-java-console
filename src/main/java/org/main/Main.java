@@ -1,12 +1,7 @@
 package org.main;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dialog.Out;
 import org.gamespace.*;
 import org.menu.Menu;
-
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
