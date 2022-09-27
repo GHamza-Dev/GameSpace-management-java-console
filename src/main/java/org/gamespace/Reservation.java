@@ -28,7 +28,7 @@ public class Reservation{
     }
 
     public int getStationId() {
-        return stationId;
+        return this.stationId;
     }
 
     public Time getStartAt() {
@@ -39,7 +39,7 @@ public class Reservation{
         return duration;
     }
     public String getDate(){
-        return date;
+        return this.date;
     }
 
     @Override

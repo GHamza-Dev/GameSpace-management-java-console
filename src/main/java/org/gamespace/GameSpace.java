@@ -55,7 +55,7 @@ public class GameSpace{
                 return;
             }
 
-            this.reservations.add(new Reservation(playerId,chosenStationId,Time.now(),plan.getDuration()));
+            this.reservations.add(new Reservation(playerId,chosenStation.getStationId(),Time.now(),plan.getDuration()));
             System.out.println("Enjoy!!!!!!!!");
         }else {
             return;
@@ -162,6 +162,8 @@ public class GameSpace{
 
         for(Reservation reservation: reservations){
             if (reservation.getDate().equals(today)) {
+                int sid = reservation.getStationId();
+                int sid1 = station.getStationId();
                 if (reservation.getStationId() == station.getStationId()) {
                     lastOccurrence = reservation;
                 }

@@ -89,5 +89,57 @@
       "minutes": 30
     },
     "date": "2022-09-26"
+  },
+  {
+    "playerId": 12,
+    "stationId": 2,
+    "startAt": {
+      "hours": 10,
+      "minutes": 4
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-27"
+  },
+  {
+    "playerId": 13,
+    "stationId": 3,
+    "startAt": {
+      "hours": 11,
+      "minutes": 22
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-27"
+  },
+  {
+    "playerId": 11,
+    "stationId": 3,
+    "startAt": {
+      "hours": 15,
+      "minutes": 8
+    },
+    "duration": {
+      "hours": 0,
+      "minutes": 30
+    },
+    "date": "2022-09-27"
+  },
+  {
+    "playerId": 12,
+    "stationId": 3,
+    "startAt": {
+      "hours": 15,
+      "minutes": 9
+    },
+    "duration": {
+      "hours": 1,
+      "minutes": 0
+    },
+    "date": "2022-09-27"
   }
 ]
