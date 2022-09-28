@@ -57,8 +57,24 @@ public class GameSpace{
             this.reservations.add(new Reservation(playerId,chosenStation.getStationId(),Time.now(),plan.getDuration(),plan.getPrice()));
             System.out.println("Enjoy!!!!!!!!");
         }else {
-            System.out.println("This station is not available at this moment!");
-            return;
+            System.out.println("This station is not available at this moment.");
+            System.out.println("Add you to the waiting list: ");
+
+            String answer = scanner.nextLine();
+            if (answer.equals("no")) {
+                System.out.println("See you next time!");
+                return;
+            }
+
+            Plan plan = promptForPlayerPlan();
+            Time avTime = stationAvailabilityTime(chosenStation);
+
+            if (plan.outOfInterval(avTime)){
+                System.out.println("This plan is out of interval please go back and chose a valid plan!");
+                return;
+            }
+
+            this.reservations.add(new Reservation(playerId,chosenStation.getStationId(),avTime,plan.getDuration(),plan.getPrice()));
         }
 
         Storage.store("reservations.json",this.reservations);

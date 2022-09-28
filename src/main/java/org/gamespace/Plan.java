@@ -15,6 +15,20 @@ public class Plan {
 
         Time until = Time.add(Time.now(),this.getDuration());
         // TODO: check if it's morning if so you need to handel the case when a player took a plan start in the morning and end in evening...
+        if (!Time.now().greaterThan(new Time(12,00)) && until.greaterThan(new Time(14,0))) {
+            return true;
+        }
+
+        if ((until.greaterThan(new Time(12,00)) && !until.greaterThan(new Time(14,00))) || until.greaterThan(new Time(22,00))) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean outOfInterval(Time startTime){
+        Time until = Time.add(startTime,this.getDuration());
+
         if ((until.greaterThan(new Time(12,00)) && !until.greaterThan(new Time(14,00))) || until.greaterThan(new Time(22,00))) {
             return true;
         }

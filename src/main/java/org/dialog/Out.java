@@ -2,7 +2,7 @@ package org.dialog;
 
 public class Out {
 
-    private final static int defaultDuration = 10;
+    private final static int defaultDuration = 0;
     private static void softOut(String text, int duration) {
         int len = text.length();
         String output = "";
